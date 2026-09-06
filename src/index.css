@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  /* Mapping your SECRET FINAL combination to Tailwind v4 */
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  
+  --color-bg-main: var(--bg-main);
+  --color-bg-card: var(--bg-card);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  
+  --color-border-light: var(--border-light);
+}
+
+:root {
+  /* SET GLOBAL FOUNDATION (Official Variables) */
+  
+  /* Brand Colors */
+  --color-primary: #16a34a;   /* Primary-600 */
+  --color-secondary: #2563eb; /* Secondary-600 */
+  --color-accent: #f97316;
+
+  /* Backgrounds */
+  --bg-main: #f5f7fb;
+  --bg-gradient: linear-gradient(135deg, #ecfdf5 0%, #f5f7fb 40%, #eef2ff 70%, #f9fafb 100%);
+  --bg-card: #ffffff;
+
+  /* Text */
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+
+  /* Border */
+  --border-light: #e5e7eb;
+}
+
+/* GLOBAL STYLES */
+body {
+  background-color: var(--bg-main);
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  @apply antialiased transition-colors duration-500;
+  min-height: 100vh;
+}
+
+/* THEME SWITCHER (Role-Based) */
+body[data-role="patient"] {
+  --color-primary: #16a34a; /* Green-600 */
+  --bg-gradient: linear-gradient(135deg, #ecfdf5 0%, #f8fafc 50%, #f0fdf4 100%);
+}
+
+body[data-role="doctor"] {
+  --color-primary: #2563eb; /* Blue-600 */
+  --bg-gradient: linear-gradient(135deg, #eff6ff 0%, #f8fafc 50%, #eef2ff 100%);
+}
+
+/* STANDARD CARD DESIGN (USE EVERYWHERE) */
+.card-standard {
+  background-color: var(--bg-card);
+  border-radius: 1rem; /* rounded-2xl */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-sm */
+  border: 1px solid #f3f4f6; /* border-gray-100 */
+  padding: 1.25rem; /* p-5 */
+}
+
+/* BUTTON SYSTEM */
+.btn-primary-patient {
+  background-color: #16a34a; /* bg-green-600 */
+  color: white;
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  border-radius: 0.75rem; /* rounded-xl */
+  @apply font-semibold transition hover:bg-green-700 active:scale-95;
+}
+
+.btn-secondary-doctor {
+  background-color: #2563eb; /* bg-blue-600 */
+  color: white;
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  border-radius: 0.75rem; /* rounded-xl */
+  @apply font-semibold transition hover:bg-blue-700 active:scale-95;
+}
+
+.btn-outline {
+  border: 1px solid #d1d5db; /* border-gray-300 */
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  border-radius: 0.75rem; /* rounded-xl */
+  @apply transition hover:bg-gray-50 active:scale-95;
+}
+
+/* INPUT FIELD DESIGN */
+.input-standard {
+  width: 100%;
+  border: 1px solid #d1d5db; /* border-gray-300 */
+  border-radius: 0.75rem; /* rounded-xl */
+  padding: 0.5rem 0.75rem; /* px-3 py-2 */
+  outline: none;
+  transition: all 0.2s;
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+}
+
+/* MICRO-INTERACTIONS */
+.hover-premium {
+  @apply transition hover:shadow-md;
+}
+
+/* Scrollbar Utilities */
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
